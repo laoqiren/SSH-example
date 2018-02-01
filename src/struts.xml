@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+	<constant name="struts.action.extension" value=","/>  
+	<package name="struts2" extends="struts-default">
+	
+		<!-- 定义一个拦截器 -->  
+        <interceptors>   
+			<interceptor name="adminInterceptor" class="filter.AdminLogin" />
+        </interceptors>  
+  
+        <!-- 定义全局Result -->  
+        <global-results>  
+            <!-- 当返回login视图名时，转入/loginAdmin.jsp页面 -->  
+            <result name="login">/loginAdmin.jsp</result>  
+        </global-results>
+	
+		<!-- 管理员登陆action --> 
+		<action name="loginAdmin" class="action.AdminAction" method="login">
+			<result name="success" type="redirectAction">${prePage}</result>
+			<result name="fail">/loginFail.jsp</result>
+			<interceptor-ref name="defaultStack" />
+		</action>
+		<!-- 管理员中心 --> 
+		<action name="admin" class="action.AdminAction" method="admin">
+			<result name="success">/admin.jsp</result>
+			<interceptor-ref name="defaultStack" /> 
+            <interceptor-ref name="adminInterceptor" />
+		</action>
+		
+		<!-- 管理站点信息 --> 
+		<action name="queryStations" class="action.AdminAction" method="queryStations">
+			<result name="success">/stationAdmin.jsp</result>
+			<interceptor-ref name="defaultStack" /> 
+            <interceptor-ref name="adminInterceptor" />
+		</action>
+		<!-- 管理列车信息 --> 
+		<action name="queryTrains" class="action.AdminAction" method="queryTrains">
+			<result name="success">/trainAdmin.jsp</result>
+			<interceptor-ref name="defaultStack" />
+            <interceptor-ref name="adminInterceptor" />
+		</action>
+		
+		<!-- 添加站点API --> 
+		<action name="addStation" class="action.AdminAction" method="addStation">
+			<interceptor-ref name="defaultStack" />
+            <interceptor-ref name="adminInterceptor" />
+		</action>
+		<!-- 添加列车信息API --> 
+		<action name="addTrain" class="action.AdminAction" method="addTrain">
+			<interceptor-ref name="defaultStack" />
+            <interceptor-ref name="adminInterceptor" />
+		</action>
+		<!-- 删除列车API --> 
+		<action name="deleteTrain" class="action.AdminAction" method="deleteTrain">
+			<interceptor-ref name="defaultStack" />
+            <interceptor-ref name="adminInterceptor" />
+		</action>
+		<!-- 删除站点API --> 
+		<action name="deleteStation" class="action.AdminAction" method="deleteStation">
+			<interceptor-ref name="defaultStack" />
+            <interceptor-ref name="adminInterceptor" />
+		</action>
+		<!-- 更新站点API --> 
+		<action name="updateStation" class="action.AdminAction" method="updateStation">
+			<interceptor-ref name="defaultStack" />
+            <interceptor-ref name="adminInterceptor" />
+		</action>
+		
+		<!-- 查票 --> 
+		<action name="query" class="action.QueryAction" method="query">
+			<result name="success">/result.jsp</result>
+		</action>
+		<action name="queryPro" class="action.QueryAction" method="queryPro">
+			<result name="success">/proResult.jsp</result>
+		</action>
+	</package>
+</struts>

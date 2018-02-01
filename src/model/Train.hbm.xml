@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        
+<hibernate-mapping>
+	<class name="model.Train" table="Train">
+		<id name="number" column="number">
+			<generator class="assigned" /> 
+		</id>
+		<many-to-one name="startId" column="startId" cascade="save-update" lazy="false"/>
+		<many-to-one name="endId" column="endId" cascade="save-update" lazy="false"/>
+		<property name="center" column="center"/>
+		<property name="time" column="time"/>
+	</class>
+</hibernate-mapping>

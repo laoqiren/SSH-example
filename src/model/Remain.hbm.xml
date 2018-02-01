@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        
+<hibernate-mapping>
+	<class name="model.Remain" table="Remain">
+		<composite-id name="rpk" class="model.RemainPK">
+			<key-property name="number" column="number"></key-property>
+			<key-property name="date" column="date"></key-property>
+		</composite-id>
+		<property name="seatOne" column="seatTwo"/>
+		<property name="seatSpecial" column="seatSpecial"/>
+		<property name="softPro" column="softPro"/>
+		<property name="softLay" column="softLay"/>
+		<property name="moveLay" column="moveLay"/>
+		<property name="hardLay" column="hardLay"/>
+		<property name="softSit" column="softSit"/>
+		<property name="hardSit" column="hardSit"/>
+	</class>
+</hibernate-mapping>

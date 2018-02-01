@@ -1,0 +1,13 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+   <bean id = "adminDao" class = "implDao.AdminDaoImpl"></bean>
+   <bean id="remainDao" class="implDao.RemainDaoImpl"></bean>
+   <bean id="stationDao" class="implDao.StationDaoImpl"></bean>
+   <bean id="trainDao" class="implDao.TrainDaoImpl"></bean>
+
+</beans>
